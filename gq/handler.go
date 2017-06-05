@@ -8,7 +8,7 @@ import (
 )
 
 func GraphQlHandler(w http.ResponseWriter, r *http.Request) {
-	query := "{episode(entity_id:10000){title,entity_id}}"
+	query := r.URL.Query().Get("query")
 
 	result := graphql.Do(graphql.Params{
 		Schema:        Schema,
